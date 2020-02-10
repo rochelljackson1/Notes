@@ -6,11 +6,14 @@ public class homeworkOne {
 
         //Variables
         double toaster = 19.99;
-        double cofeeMaker = 29.49;
+        double coffeeMaker = 29.49;
         double waffleMaker = 15.79;
         double blender = 24.99;
         double kettle = 24.99;
         double totalPrice = 0;
+        double discount = 0.0;
+        double change = 0.0;
+        double credit = 100.00;
         boolean exit = false;
 
         do { //This do-statment comes from https://stackoverflow.com/questions/45117385/want-to-return-to-main-menu-in-switch-case
@@ -29,7 +32,6 @@ public class homeworkOne {
             //Switch statements for the select options
             switch (menuNum) {
                 case 1:
-                    System.out.println("Case 1");
                     Scanner cartScnr = new Scanner(System.in);
                     int cartNum = 0;
                     while (cartNum != 6) {
@@ -46,37 +48,34 @@ public class homeworkOne {
                         switch (cartNum) {
                             case 1:
                                 System.out.println("You have added a Toaster to your order.");
-                                totalPrice += 19.99;
+                                totalPrice += toaster;
                                 System.out.println("Your current total is: $" + totalPrice);
                                 break;
 
                             case 2:
                                 System.out.println("You have added a Coffee maker to your order.");
-                                totalPrice += 29.49;
+                                totalPrice += coffeeMaker;
                                 System.out.println("Your current total is: $" + totalPrice);
                                 break;
 
                             case 3:
                                 System.out.println("You have added a Waffle maker to your order.");
-                                totalPrice += 15.79;
+                                totalPrice += waffleMaker;
                                 System.out.println("Your current total is: $" + totalPrice);
                                 break;
 
                             case 4:
                                 System.out.println("You have added a Blender to your order.");
-                                totalPrice += 24.99;
+                                totalPrice += blender;
                                 System.out.println("Your current total is: $" + totalPrice);
                                 break;
 
                             case 5:
                                 System.out.println("You have added a Kettle to your order.");
-                                totalPrice += 24.99;
+                                totalPrice += kettle;
                                 System.out.println("Your current total is: $" + totalPrice);
                                 break;
 
-                            case 6:
-
-                                break;
                             default:
                                 System.out.println("Invalid item number please try again");
                                 break;
@@ -85,15 +84,37 @@ public class homeworkOne {
                     break;
 
                 case 2:
-                    System.out.println("Case 2");
+                    if (totalPrice > 50.00) {
+                        if (totalPrice > credit) {
+                            System.out.println("Insufficient funds!");
+                        }
+                        else {
+                            discount = (totalPrice * 0.2);
+                            totalPrice = totalPrice - discount;
+                            totalPrice = (totalPrice * 0.085) + totalPrice;
+                            System.out.println("Your total due is: $" + totalPrice);
+                            change = credit - totalPrice;
+                            System.out.println("Thank you! You saved: " + discount + " Your change is: $" + change);
+                            System.out.println("Your items will be on their way soon!");
+                        }
+                    }
+                    else {
+                        totalPrice = (totalPrice * 0.085) + totalPrice;
+                        System.out.println("Your total due is: $" + totalPrice);
+                        System.out.println("Thank you! Your change is: $" + totalPrice);
+                        System.out.println("Your items will be on their way soon!");
+                        totalPrice = 0.0;
+                    }
                     break;
 
                 case 3:
-                    System.out.println("Case 3");
+                    credit += 5.00;
+                    System.out.println("Credit available: $" + credit);
                     break;
 
                 case 4:
-                    System.out.println("Case 4");
+                    totalPrice = 0.0;
+                    System.out.println("Current order balance has been cleared. Current due: $" + totalPrice);
                     break;
 
                 default:
