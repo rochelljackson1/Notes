@@ -30,6 +30,34 @@ public class ExampleProgram1 {
         // This does exactly the same as above
         System.out.println(5 + one.getX());
 
+        //using overloaded methods
+        System.out.println(one.createSum(11));
 
+        System.out.println(one.createSum(3.4));
+
+        // Doesnt' work
+        //System.out.println(one.createSum(3.4, 6));
+
+        System.out.println(one.createSum(6, 6));
+
+        // call from main()
+        System.out.println("Here we start using test f");
+        test t = new test();
+
+        System.out.print(t.getX() + ",");
+        System.out.print(t.getY() + ",");
+        System.out.println(t.getZ());
+
+        t.f(1,1);
+
+        System.out.print(t.getX() + ",");
+        System.out.print(t.getY() + ",");
+        System.out.println(t.getZ());
+
+        t.f(3,3);
+
+        System.out.print(t.getX() + ",");
+        System.out.print(t.getY() + ",");
+        System.out.println(t.getZ());
     }
 }
